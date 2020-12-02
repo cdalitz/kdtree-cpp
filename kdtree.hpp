@@ -4,7 +4,7 @@
 //
 // Kd-Tree implementation.
 //
-// Copyright: Christoph Dalitz, 2018
+// Copyright: Christoph Dalitz, 2018-2020
 //            Jens Wilberg, 2018
 // License:   BSD style license
 //            (see the file LICENSE for details)
@@ -37,7 +37,7 @@ typedef std::vector<KdNode> KdNodeVector;
 // and overwrite the call operator operator()
 struct KdNodePredicate {
   virtual ~KdNodePredicate() {}
-  virtual bool operator()(const KdNode& kn) const { return true; }
+  virtual bool operator()(const KdNode&) const { return true; }
 };
 
 //--------------------------------------------------------

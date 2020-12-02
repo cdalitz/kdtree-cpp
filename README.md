@@ -58,7 +58,7 @@ when compiling.
 Authors & Copyright
 -------------------
 
- - Christoph Dalitz, 2018, <https://lionel.kr.hsnr.de/~dalitz/data/kdtree/>
+ - Christoph Dalitz, 2018-2020, <https://lionel.kr.hsnr.de/~dalitz/data/kdtree/>
  - Jens Wilberg, 2018
 
 For licensing information, see the file LICENSE for details.
