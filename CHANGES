@@ -1,6 +1,9 @@
 Change log of kd-tree library
 =============================
 
+ - exception thrown if vector nodes empty in constructor of KdTree
+
+
 Version 1.1 from 2020-12-02
 ---------------------------
 

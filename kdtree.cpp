@@ -178,6 +178,9 @@ KdTree::KdTree(const KdNodeVector* nodes, int distance_type /*=2*/) {
   size_t i, j;
   double val;
   // copy over input data
+  if (!nodes || nodes->empty())
+    throw std::invalid_argument(
+        "kdtree::KdTree(): argument nodes must not be empty");
   dimension = nodes->begin()->point.size();
   allnodes = *nodes;
   // initialize distance values
