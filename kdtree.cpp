@@ -134,7 +134,7 @@ class DistanceL1 : virtual public DistanceMeasure {
       return fabs(x - y);
   }
 };
-// Euklidean distance (L2 norm)
+// Euklidean distance (L2 norm) (squared)
 class DistanceL2 : virtual public DistanceMeasure {
   DoubleVector* w;
 
@@ -174,7 +174,7 @@ KdTree::~KdTree() {
   if (root) delete root;
   delete distance;
 }
-// distance_type can be 0 (Maximum), 1 (Manhatten), or 2 (Euklidean)
+// distance_type can be 0 (Maximum), 1 (Manhatten), or 2 (Euklidean [squared])
 KdTree::KdTree(const KdNodeVector* nodes, int distance_type /*=2*/) {
   size_t i, j;
   double val;
@@ -202,7 +202,7 @@ KdTree::KdTree(const KdNodeVector* nodes, int distance_type /*=2*/) {
   root = build_tree(0, 0, allnodes.size());
 }
 
-// distance_type can be 0 (Maximum), 1 (Manhatten), or 2 (Euklidean)
+// distance_type can be 0 (Maximum), 1 (Manhatten), or 2 (Euklidean [squared])
 void KdTree::set_distance(int distance_type,
                           const DoubleVector* weights /*=NULL*/) {
   if (distance) delete distance;

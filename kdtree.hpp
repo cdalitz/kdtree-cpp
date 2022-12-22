@@ -93,7 +93,7 @@ class KdTree {
   KdNodeVector allnodes;
   size_t dimension;
   kdtree_node* root;
-  // distance_type can be 0 (max), 1 (city block), or 2 (euklid)
+  // distance_type can be 0 (max), 1 (city block), or 2 (euklid [squared])
   KdTree(const KdNodeVector* nodes, int distance_type = 2);
   ~KdTree();
   void set_distance(int distance_type, const DoubleVector* weights = NULL);
