@@ -2,10 +2,9 @@ C++ Kd-Tree Library
 ===================
 
 This is a standalone C++ version of the kd-tree implementation in the
-Gamera framework that has been extended by a range search and has
-been relicensed by the original author under a BSD style license.
-It is written in plain C++98 and does not depend on any third party
-libraries.
+Gamera framework. It has been extended by a range search and relicensed
+by the original author under a BSD style license. The library is
+written in plain C++98 and does not depend on any third party libraries.
 
 A kd-tree is a data structure that allows for nearest neighbor queries
 in expected O(log(n)) time. The creation time of a kd-tree is O(n log(n)).
@@ -13,7 +12,7 @@ This library offers four additional features not commonly found in kd-tree
 implementations:
 
  - kNN search with optional additional search condition (search predicate)
- - support for Euclidean, Manhatten, and Maximum distance and
+ - support for Euclidean, Manhattan, and Maximum distance and
    their weighted extensions (Euclidean is the default distance)
  - range query
  - nodes can store a pointer to arbitrary data as void*
