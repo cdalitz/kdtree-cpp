@@ -1,9 +1,9 @@
 //
 // Kd-Tree implementation.
 //
-// Copyright: Christoph Dalitz, 2018
+// Copyright: Christoph Dalitz, 2018-2023
 //            Jens Wilberg, 2018
-// Version:   1.2
+// Version:   1.3
 // License:   BSD style license
 //            (see the file LICENSE for details)
 //
@@ -411,18 +411,39 @@ void KdTree::range_search(const CoordPoint& point, kdtree_node* node,
 // ball with radius *dist* around *point*
 bool KdTree::bounds_overlap_ball(const CoordPoint& point, double dist,
                                  kdtree_node* node) {
-  double distsum = 0.0;
-  size_t i;
-  for (i = 0; i < dimension; i++) {
-    if (point[i] < node->lobound[i]) {  // lower than low boundary
-      distsum += distance->coordinate_distance(point[i], node->lobound[i], i);
-      if (distsum > dist) return false;
-    } else if (point[i] > node->upbound[i]) {  // higher than high boundary
-      distsum += distance->coordinate_distance(point[i], node->upbound[i], i);
-      if (distsum > dist) return false;
+  if (distance_type != 0) {
+    double distsum = 0.0;
+    size_t i;
+    for (i = 0; i < dimension; i++) {
+      if (point[i] < node->lobound[i]) {  // lower than low boundary
+        distsum += distance->coordinate_distance(point[i], node->lobound[i], i);
+        if (distsum > dist) return false;
+      } else if (point[i] > node->upbound[i]) {  // higher than high boundary
+        distsum += distance->coordinate_distance(point[i], node->upbound[i], i);
+        if (distsum > dist) return false;
+      }
     }
+    return true;
+  } else {
+    double max_dist = 0.0;
+    double curr_dist = 0.0;
+    size_t i;
+    for (i = 0; i < dimension; i++) {
+      //if(point[i] != node->lobound[i]) {
+        if (point[i] < node->lobound[i]) {  // lower than low boundary
+          curr_dist = distance->coordinate_distance(point[i], node->lobound[i], i);
+        } else if (point[i] > node->upbound[i]) {  // higher than high boundary
+          curr_dist = distance->coordinate_distance(point[i], node->upbound[i], i);
+        }
+      
+        if(curr_dist > max_dist) {
+          max_dist = curr_dist;
+        }
+        if (max_dist > dist) return false;
+      //}
+    }
+    return true;
   }
-  return true;
 }
 
 // returns true when the bounds of *node* completely contain the

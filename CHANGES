@@ -1,6 +1,11 @@
 Change log of kd-tree library
 =============================
 
+ - error in searches with maximum distance (disacne_type == 0) fixed
+   fixes https://github.com/cdalitz/kdtree-cpp/issues/6
+   (thanks to Juliane Arning)
+
+
 Version 1.2 from 2022-10-17
 ---------------------------
 

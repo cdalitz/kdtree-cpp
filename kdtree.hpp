@@ -6,7 +6,7 @@
 //
 // Copyright: Christoph Dalitz, 2018-2022
 //            Jens Wilberg, 2018
-// Version:   1.2
+// Version:   1.3
 // License:   BSD style license
 //            (see the file LICENSE for details)
 //
