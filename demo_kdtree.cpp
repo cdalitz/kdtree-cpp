@@ -82,8 +82,15 @@ int main(int argc, char** argv) {
   print_nodes(result);
 
   // 1.4) range query
-  tree.range_nearest_neighbors(test_point, 2.0, &result);
-  cout << "Neighbors of (" << test_point[0] << "," << test_point[1] << ") with distance <= 2.0:\n  ";
+  test_point[0] = 8;
+  test_point[1] = 2;
+  tree.range_nearest_neighbors(test_point, 1.1, &result);
+  cout << "Neighbors of (" << test_point[0] << "," << test_point[1] << ") with distance <= 1.1:\n  ";
+  print_nodes(result);
+  // same with maximum distance (distance_type=0)
+  Kdtree::KdTree tree0(&nodes, 0);
+  tree0.range_nearest_neighbors(test_point, 1.1, &result);
+  cout << "Neighbors of (" << test_point[0] << "," << test_point[1] << ") with maximum distance <= 1.1:\n  ";
   print_nodes(result);
 
   //
