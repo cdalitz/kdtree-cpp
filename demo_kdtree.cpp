@@ -1,6 +1,6 @@
 //
 // Demonstration of typical use cases of the kd-tree library
-// Author:  Christoph Dalitz, 2018-02-04
+// Author:  Christoph Dalitz, 2024-01-08
 // License: BSD style license (see the file LICENSE)
 //
 

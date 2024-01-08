@@ -4,7 +4,7 @@
 //
 // Kd-Tree implementation.
 //
-// Copyright: Christoph Dalitz, 2018-2022
+// Copyright: Christoph Dalitz, 2018-2023
 //            Jens Wilberg, 2018
 // Version:   1.3
 // License:   BSD style license

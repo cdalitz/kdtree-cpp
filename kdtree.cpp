@@ -424,23 +424,20 @@ bool KdTree::bounds_overlap_ball(const CoordPoint& point, double dist,
       }
     }
     return true;
-  } else {
+  } else { // maximum distance needs different treatment
     double max_dist = 0.0;
     double curr_dist = 0.0;
     size_t i;
     for (i = 0; i < dimension; i++) {
-      //if(point[i] != node->lobound[i]) {
-        if (point[i] < node->lobound[i]) {  // lower than low boundary
-          curr_dist = distance->coordinate_distance(point[i], node->lobound[i], i);
-        } else if (point[i] > node->upbound[i]) {  // higher than high boundary
-          curr_dist = distance->coordinate_distance(point[i], node->upbound[i], i);
-        }
-      
-        if(curr_dist > max_dist) {
-          max_dist = curr_dist;
-        }
-        if (max_dist > dist) return false;
-      //}
+      if (point[i] < node->lobound[i]) {  // lower than low boundary
+        curr_dist = distance->coordinate_distance(point[i], node->lobound[i], i);
+      } else if (point[i] > node->upbound[i]) {  // higher than high boundary
+        curr_dist = distance->coordinate_distance(point[i], node->upbound[i], i);
+      }
+      if(curr_dist > max_dist) {
+        max_dist = curr_dist;
+      }
+      if (max_dist > dist) return false;
     }
     return true;
   }
